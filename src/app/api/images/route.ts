@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import cloudinary from '@/utils/cloudinary';
 
+interface CloudinaryResource {
+  asset_id: string;
+  secure_url: string;
+  public_id: string;
+  tags?: string[];
+  created_at: string;
+}
 // GET images
 export async function GET() {
   try {
@@ -9,9 +16,8 @@ export async function GET() {
       max_results: 30,
     });
     console.log("Cloudinary response:", result);
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const images = result.resources.map((resource: any) => ({
+    
+    const images = result.resources.map((resource: CloudinaryResource) => ({
       id: resource.asset_id,
       url: resource.secure_url,
       public_id: resource.public_id,
@@ -19,7 +25,7 @@ export async function GET() {
       tags: resource.tags || [],
       created_at: resource.created_at,
     }));
-
+    
     return NextResponse.json({ images });
   } catch (error) {
     console.error('Error fetching images:', error);
@@ -29,8 +35,6 @@ export async function GET() {
     );
   }
 }
-
-
 
 // DELETE image
 export async function DELETE(request: NextRequest) {
