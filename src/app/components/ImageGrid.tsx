@@ -65,7 +65,7 @@ export default function ImageGrid({ searchQuery }: ImageGridProps) {
 
   useEffect(() => {
     fetchImages();
-  }, [page]); 
+  },); 
 
   useEffect(() => {
     if (searchQuery) {

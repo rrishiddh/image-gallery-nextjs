@@ -10,6 +10,7 @@ export async function GET() {
     });
     console.log("Cloudinary response:", result);
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const images = result.resources.map((resource: any) => ({
       id: resource.asset_id,
       url: resource.secure_url,
