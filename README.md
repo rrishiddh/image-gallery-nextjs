@@ -23,18 +23,17 @@ A simple image gallery web application with upload and delete functionality, bui
 
 ## Technologies Used
 
-- **Next.js 14** (with App Router)
+- **Next.js 15**
 - **TypeScript**
-- **Material UI** (MUI)
-- **Cloudinary** (for image storage and management)
+- **Material UI** 
+- **Cloudinary** 
 - **React Hooks**
-- **CSS in JS**
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v18 or newer)
+- Node.js 
 - npm or yarn
 - Cloudinary account
 
