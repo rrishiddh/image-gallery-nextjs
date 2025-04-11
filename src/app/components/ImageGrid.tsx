@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { 
   Card, 
   CardMedia, 
@@ -32,7 +32,7 @@ export default function ImageGrid({ searchQuery }: ImageGridProps) {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [imageToDelete, setImageToDelete] = useState<ImageType | null>(null);
 
-  const fetchImages = async () => {
+  const fetchImages = useCallback(async () => {
     try {
       setLoading(true);
       const response = await fetch(`/api/images?page=${page}`);
@@ -61,11 +61,11 @@ export default function ImageGrid({ searchQuery }: ImageGridProps) {
     } finally {
       setLoading(false);
     }
-  };
-
+  }, [page]); 
+  
   useEffect(() => {
     fetchImages();
-  },); 
+  }, [fetchImages]); 
 
   useEffect(() => {
     if (searchQuery) {

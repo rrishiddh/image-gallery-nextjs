@@ -1,36 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextGen Image Gallery
+
+A simple image gallery web application with upload and delete functionality, built using AI with Next.js, TypeScript and Material UI.
+
+## Live Demo
+
+[Live Demo](https://image-gallery-nextjs-rrishiddh.vercel.app/)
+
+## GitHub Repository
+
+[GitHub Repository](https://github.com/rrishiddh/image-gallery-nextjs)
+
+## Features
+
+- Upload single/multiple images using Cloudinary
+- Display uploaded images in a responsive grid
+- Click on images to open a larger preview
+- Delete images with confirmation popup
+- Pagination with "Load More" button
+- Search functionality to filter images by title or tags
+- Fully responsive design
+- Basic header and footer with Material UI
+
+## Technologies Used
+
+- **Next.js 14** (with App Router)
+- **TypeScript**
+- **Material UI** (MUI)
+- **Cloudinary** (for image storage and management)
+- **React Hooks**
+- **CSS in JS**
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js (v18 or newer)
+- npm or yarn
+- Cloudinary account
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/image-gallery.git
+   cd image-gallery
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. Create a `.env.local` file in the root directory with your Cloudinary credentials
+   ```
+   NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+   CLOUDINARY_API_KEY=your_cloudinary_api_key
+   CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+   ```
+
+4. Set up Cloudinary upload preset
+   - Log in to your Cloudinary dashboard
+   - Go to Settings > Upload
+   - Scroll down to "Upload presets"
+   - Click "Add upload preset"
+   - Set "Mode" to "Unsigned"
+   - Set "Preset name" to "gallery_upload"
+   - Save the preset
+
+5. Run the development server
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+6. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── api/
+│   │   ├── images/
+│   │   │   ├── route.ts         # API routes for images
+│   ├── components/
+│   │   ├── Header.tsx           # Header component
+│   │   ├── Footer.tsx           # Footer component
+│   │   ├── ImageGrid.tsx        # Grid to display images
+│   │   ├── ImageModal.tsx       # Modal for image preview
+│   │   ├── UploadButton.tsx     # Button to upload images
+│   │   ├── DeleteConfirmation.tsx # Confirmation dialog
+│   │   ├── SearchBar.tsx        # Search functionality
+│   ├── layout.tsx               # Root layout
+│   ├── page.tsx                 # Home page
+├── utils/
+│   ├── cloudinary.ts            # Cloudinary utilities
+├── types/
+│   ├── image.ts                 # Type definitions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Building for Production
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To build the application for production, run:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+# or
+yarn build
+```
 
-## Learn More
+Then, to start the production server:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm start
+# or
+yarn start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notes for Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- This project uses Next.js App Router for routing
+- Material UI is used for the UI components
+- Images are stored and managed using Cloudinary
+- The application is fully responsive and works on all device sizes
 
-## Deploy on Vercel
+## Future Improvements
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Add user authentication
+- Add image categorization and collections
+- Add image editing functionality
+- Implement drag and drop for image uploads
